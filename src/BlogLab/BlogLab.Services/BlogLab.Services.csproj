@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.18.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="5.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.20.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
   </ItemGroup>
 
   <ItemGroup>
