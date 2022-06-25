@@ -14,7 +14,7 @@ namespace BlogLab.Repository
 
         public Task<List<Blog>> GetAllByUserIdAsync(int applicationUserId);
 
-        public Task<List<Blog>> GetAllFamous();
+        public Task<List<Blog>> GetAllFamousAsync();
 
         public Task<int> DeleteAsync(int blogId);
     }

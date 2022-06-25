@@ -259,7 +259,7 @@ BEGIN
 		t1.[ActiveInd] = CONVERT(BIT, 0),
 		t1.[UpdateDate] = GETDATE()
 	FROM
-		[dbo].[BlogComments] t1
+		[dbo].[BlogComment] t1
 		INNER JOIN #BlogCommentsToBeDeleted t2
 			ON t1.[BlogCommentId] = t2.[BlogCommentId];
 END

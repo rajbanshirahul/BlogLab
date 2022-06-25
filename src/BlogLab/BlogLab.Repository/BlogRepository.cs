@@ -40,7 +40,7 @@ namespace BlogLab.Repository
                 await connection.OpenAsync();
 
                 using var multi = await connection.QueryMultipleAsync(
-                    "Blog_All",
+                    "Blog_GetAll",
                     new { Offset = (blogPaging.Page - 1) * blogPaging.PageSize, blogPaging.PageSize },
                     commandType: CommandType.StoredProcedure);
 
@@ -64,7 +64,7 @@ namespace BlogLab.Repository
             return blogs.ToList();
         }
 
-        public async Task<List<Blog>> GetAllFamous()
+        public async Task<List<Blog>> GetAllFamousAsync()
         {
             await using var connection = new SqlConnection(_config.GetConnectionString("DefaultConnection"));
             await connection.OpenAsync();
