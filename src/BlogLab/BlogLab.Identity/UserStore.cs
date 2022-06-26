@@ -126,7 +126,6 @@ namespace BlogLab.Identity
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }

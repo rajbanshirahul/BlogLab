@@ -10,7 +10,7 @@ namespace BlogLab.Models.BlogComment
 
         [Required(ErrorMessage = "Content is required")]
         [MinLength(1, ErrorMessage = "Must be 1-500 characters")]
-        [MaxLength(5, ErrorMessage = "Must be 1-500 characters")]
+        [MaxLength(500, ErrorMessage = "Must be 1-500 characters")]
         public string Content { get; set; }
     }
 }

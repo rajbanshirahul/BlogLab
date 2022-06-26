@@ -62,6 +62,7 @@ namespace BlogLab.Web
                 {
                     options.RequireHttpsMetadata = false;
                     options.SaveToken = true;
+                    options.MapInboundClaims = false;
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ValidateIssuer = true,
@@ -97,7 +98,7 @@ namespace BlogLab.Web
                 app.UseCors();
             }
 
-            app.UseAuthorization();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

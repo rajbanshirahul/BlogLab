@@ -1,7 +1,6 @@
 ﻿using BlogLab.Models.BlogComment;
 using BlogLab.Repository;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -32,7 +31,7 @@ namespace BlogLab.Web.Controllers
             return Ok(createdBlogComment);
         }
 
-        [HttpGet("{blogId}")]
+        [HttpGet("{blogId:int}")]
         public async Task<ActionResult<List<BlogComment>>> GetAll(int blogId)
         {
             var blogComments = await _blogCommentRepository.GetAllAsync(blogId);
@@ -41,7 +40,7 @@ namespace BlogLab.Web.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{blogCommentId}")]
+        [HttpDelete("{blogCommentId:int}")]
         public async Task<ActionResult<int>> Delete(int blogCommentId)
         {
             int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);

@@ -44,14 +44,14 @@ namespace BlogLab.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<PagedResults<Blog>>> GetAll([FromQuery] BlogPaging blogPaging)
+        public async Task<ActionResult<PagedResults<Blog>>> GetAll(BlogPaging blogPaging)
         {
             var blogs = await _blogRepository.GetAllAsync(blogPaging);
 
             return Ok(blogs);
         }
 
-        [HttpGet("{blogId}")]
+        [HttpGet("{blogId:int}")]
         public async Task<ActionResult<Blog>> Get(int blogId)
         {
             var blog = await _blogRepository.GetAsync(blogId);
@@ -59,7 +59,7 @@ namespace BlogLab.Web.Controllers
             return Ok(blog);
         }
 
-        [HttpGet("user/{applicationUserId}")]
+        [HttpGet("user/{applicationUserId:int}")]
         public async Task<ActionResult<List<Blog>>> GetByApplicationUserId(int applicationUserId)
         {
             var blogs = await _blogRepository.GetAllByUserIdAsync(applicationUserId);
@@ -67,7 +67,7 @@ namespace BlogLab.Web.Controllers
             return Ok(blogs);
         }
 
-        [HttpGet("{famous}")]
+        [HttpGet("famous")]
         public async Task<ActionResult<List<Blog>>> GetAllFamous()
         {
             var blogs = await _blogRepository.GetAllFamousAsync();
@@ -76,7 +76,7 @@ namespace BlogLab.Web.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{blogId}")]
+        [HttpDelete("{blogId:int}")]
         public async Task<ActionResult<int>> Delete(int blogId)
         {
             int applicationUserId = int.Parse(User.Claims.First(i => i.Type == JwtRegisteredClaimNames.NameId).Value);
