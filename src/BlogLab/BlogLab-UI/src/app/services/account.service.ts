@@ -54,7 +54,7 @@ export class AccountService {
 
   public isLoggedIn() {
     const currentUser = this.currentUserValue;
-    return currentUser && currentUser.token;
+    return !!currentUser && !!currentUser.token;
   }
 
   logout() {
